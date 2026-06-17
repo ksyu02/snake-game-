@@ -905,6 +905,12 @@ function loop() {
     if (gameOver()) {
 
         gameRunning = false;
+        
+        let name = prompt("Введите имя:");
+if (!name) name = "Игрок";
+
+sendScore(name, score);
+loadScores();
 
         ctx.fillStyle =
             "rgba(255,0,0,0.75)";
@@ -1013,7 +1019,32 @@ document.addEventListener("keydown", e => {
     }
 
 });
+function sendScore(name, score) {
+    fetch("http://localhost:3000/scores", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            player_name: name,
+            score: score
+        })
+    });
+}
+function loadScores() {
+    fetch("http://localhost:3000/scores")
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById("scoresList");
+            list.innerHTML = "";
+
+            data.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item.player_name + " - " + item.score;
+                list.appendChild(li);
+            });
+        });
+}
 
 /* ---------------- FIRST SCREEN ---------------- */
-
 showStartScreen();
