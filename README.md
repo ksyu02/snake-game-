@@ -7,7 +7,8 @@
 Группа: 10-23
 Курс: 3
 ПМ.11 / ПМ.02
-https://ksyu02.github.io/snake-game-/
+ссылка на выбраный проект Build Snake using only JavaScript, HTML & CSS
+ссылка на игру https://ksyu02.github.io/snake-game-/
 ## 📌 Описание проекта
 
 Игрок управляет змейкой, собирает еду и набирает очки.  
